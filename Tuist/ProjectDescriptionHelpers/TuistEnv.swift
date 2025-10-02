@@ -1,7 +1,18 @@
 import ProjectDescription 
 
 public enum TuistEnv {
+
 	///
+	public enum Plan: String, CaseIterable {
+		case debug = "Debug"
+		case staging = "Staging"
+		case production = "Production"
+
+		public var configurationName: ConfigurationName {
+			ConfigurationName(stringLiteral: rawValue)
+		}
+	}
+
 	public static let appName: String = Environment.APP_NAME.getString(
 		default: "MissingAppName"
 	)
@@ -9,12 +20,6 @@ public enum TuistEnv {
 	public static let bundleSuffix: String = Environment.BUNDLE_SUFFIX.getString(
 		default: "MissingBundleSuffix"
 	)
-
-	public enum Plan: String {
-		case debug = "Debug"
-		case staging = "Staging"
-		case production = "Production"
-	}
 
 	public static let appSchemes: [Scheme] = {
 		return [debugScheme, stagingScheme, productionScheme]
@@ -51,9 +56,7 @@ public enum TuistEnv {
 			targets: ["\(appName)"]
 		),
 		runAction: .runAction(
-			configuration: ConfigurationName(
-				stringLiteral: TuistEnv.Plan.staging.rawValue
-			)
+			configuration: TuistEnv.Plan.staging.configurationName
 		),
 		archiveAction: .archiveAction(
 			configuration: ConfigurationName(
@@ -69,9 +72,7 @@ public enum TuistEnv {
 			targets: ["\(appName)"]
 		),
 		runAction: .runAction(
-			configuration: ConfigurationName(
-				stringLiteral: TuistEnv.Plan.production.rawValue
-			)
+			configuration: TuistEnv.Plan.production.configurationName
 		),
 		archiveAction: .archiveAction(
 			configuration: ConfigurationName(
