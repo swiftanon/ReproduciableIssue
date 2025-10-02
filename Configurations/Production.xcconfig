@@ -1,0 +1,17 @@
+//
+//  Production.xcconfig
+//  Learn
+//
+//   Created by learnswiftanon on 9/30/25.
+//
+
+
+/// Inherit Base.config
+#include "Base.xcconfig"
+
+/// App Settings
+APP_ENV = production
+BUNDLE_DISPLAY_NAME = $(APP_NAME)
+USERDEFAULTS = $(BUNDLE_SUFFIX)
+BUNDLE_ID = $(BUNDLE_SUFFIX).$(APP_NAME)
+CLOUDKIT_CONTAINER = iCloud.$(BUNDLE_SUFFIX)$(APP_NAME)

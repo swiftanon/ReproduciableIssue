@@ -1,0 +1,17 @@
+//
+//  Staging.xcconfig
+//  Learn
+//
+//   Created by learnswiftanon on 9/30/25.
+//
+
+
+/// Inherit Base.config
+#include "Base.xcconfig"
+
+/// App Settings
+APP_ENV = staging
+BUNDLE_DISPLAY_NAME = $(APP_NAME).$(APP_ENV)
+USERDEFAULTS = $(BUNDLE_SUFFIX).$(APP_ENV)
+BUNDLE_ID = $(BUNDLE_SUFFIX).$(APP_NAME).$(APP_ENV)
+CLOUDKIT_CONTAINER = iCloud.$(BUNDLE_SUFFIX)$(APP_NAME).$(APP_ENV)

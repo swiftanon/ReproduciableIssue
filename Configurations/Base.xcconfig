@@ -1,0 +1,19 @@
+//
+//  Debug.xcconfig
+//  Learn
+//
+//  Created by learnswiftanon on 9/30/25.
+//
+
+
+
+//
+OTHER_SWIFT_FLAGS[config=Debug][sdk=*] = $(inherited) -DDEBUG
+OTHER_SWIFT_FLAGS[config=Staging][sdk=*] = $(inherited) -DSTAGING
+OTHER_SWIFT_FLAGS[config=Release][sdk=*] = $(inherited) -DRELEASE
+
+
+
+APP_NAME = Learn //CFBundleName; used internal for targets, etc
+BUNDLE_SUFFIX = com.reproduciableissue
+IPHONEOS_DEPLOYMENT_TARGET = 17.6
