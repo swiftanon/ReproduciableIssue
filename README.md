@@ -2,29 +2,32 @@
 
 ## Expected Behavior:
 I expect ProjectDescriptionHelpers to help me "not repeat myself". 
-This means that I should be able to define debug, staging, production schemes 
-once and only once and be able to use them in the appropriate places.
+This means that I should be able to define `debug, staging, production schemes` 
+only once and be able to use them in the appropriate places.
 
-Details: 
+#### Details:
 According to your documentation, this is the method signature for creating a 
 Project:
+```swift
 let project = Project(
     name: String,
     targets: [Target],
     schemes: [Scheme]
 )
+```
 
 Therefore, I expect that when this implementation of that signature: 
+```swift
 let project = Project.create(
 	name: "Learn",
 	destinations: .iOS,
 	dependencies: [
 	]
 )
-
+```
 is used in conjunction with this implementation of a ProjectDescriptionHelper
 
-```
+```swift
 extension Project {
 	public static func create(
 		name: String,
@@ -128,13 +131,18 @@ is successfully created.
 ## Current Behavior
 
 When I ran `just generate-project`, these following errors occur:
-1). `The build configuration 'Release-Staging' specified in the 
+
+- `The build configuration 'Release-Staging' specified in the 
 scheme's run action isn't defined in the project.`
-2). `The build configuration 'Release-Production' specified in 
+
+- `The build configuration 'Release-Production' specified in 
 the scheme's run action isn't defined in the project.`
 
 
 ### Steps To Reproduce:
-1). Clone this [repo]()
-2). cd into repo dir
-3). run `just generate-project`
+
+- Clone this [repo](https://github.com/swiftanon/ReproduciableIssue)
+
+- cd into repo dir
+
+- run `just generate-project`
