@@ -2,9 +2,7 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let project = Project.create(
-	name: "Learn",
-	destinations: .iOS,
-	dependencies: [
-	]
+let project = Project.app(
+	name: TuistEnv.appName,
+	schemes: TuistEnv.appSchemes
 )
